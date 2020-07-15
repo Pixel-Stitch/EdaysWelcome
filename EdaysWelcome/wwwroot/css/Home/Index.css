@@ -1,0 +1,36 @@
+﻿.img {
+    border-radius: 5px;
+}
+
+.row.img {
+    position: relative;
+    height: 250px;
+    background-image: url('../../imgs/sunrise.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px 10px 0px 0px;
+}
+    .row.img h1 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        text-shadow: 2px 2px 4px black;
+    }
+
+.MOTDcontainer {
+    border-radius: 10px;
+    border: 1px solid rgb(214, 115, 2);
+    background-color: rgba(199, 199, 199, 0.2);
+}
+
+.languageFlag {
+    width: 40px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    img {
+        width: 250px;
+    }
+}

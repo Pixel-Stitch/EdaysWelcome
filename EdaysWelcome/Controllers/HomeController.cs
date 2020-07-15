@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using EdaysWelcome.Models;
+using DataAccess;
 
 namespace EdaysWelcome.Controllers
 {
@@ -20,12 +18,15 @@ namespace EdaysWelcome.Controllers
 
         public IActionResult Index()
         {
-            return View();
-        }
+            var welcomeMessage = WelcomeMessageDAL.Load(DateTime.Now.DayOfWeek);
 
-        public IActionResult Privacy()
-        {
-            return View();
+            if (welcomeMessage == null)
+            {
+                DevHelper.ResetDBData(); // fills the DB with default data if empty --> DEBUG ONLY
+                welcomeMessage = WelcomeMessageDAL.Load(DateTime.Now.DayOfWeek);
+            }
+
+            return View(welcomeMessage);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

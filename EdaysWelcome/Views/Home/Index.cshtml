@@ -14,10 +14,10 @@
         <h1>Message of the Day</h1>
     </div>
     <div class="row mt-5 align-items-center message pb-3">
-        <div class="col-12 col-md-5 mb-4 text-center">
-            <img class="img" src="@Model.ImageBase64" alt="">
+        <div class="col-sm-12 col-md-5 mb-4 text-center">
+            <img class="img messageImg" src="@Model.ImageBase64">
         </div>
-        <div class="col-12 col-md-7 text-sm-center text-md-left">
+        <div class="col-sm-12 col-md-7 text-sm-center text-sm-center text-md-left">
             <p>@Model.Message(languageCode)</p>
         </div>
     </div>

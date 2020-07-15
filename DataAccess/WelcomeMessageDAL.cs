@@ -19,7 +19,15 @@ namespace DataAccess
 
             var query = _sqlBuilder.ToString();
 
-            return SqlDataAccess.LoadData<WelcomeMessage>(query).FirstOrDefault();
+            var welcomeMessage = SqlDataAccess.LoadData<WelcomeMessage>(query).FirstOrDefault();
+
+            if (welcomeMessage == null)
+            {
+                DevHelper.ResetDBData(); // fills the DB with default data if empty --> DEBUG ONLY
+                welcomeMessage = SqlDataAccess.LoadData<WelcomeMessage>(query).FirstOrDefault();
+            }
+
+            return welcomeMessage;
         }
 
         public static int Save(WelcomeMessage welcomeMessage)

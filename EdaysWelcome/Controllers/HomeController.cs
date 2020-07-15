@@ -20,12 +20,6 @@ namespace EdaysWelcome.Controllers
         {
             var welcomeMessage = WelcomeMessageDAL.Load(DateTime.Now.DayOfWeek);
 
-            if (welcomeMessage == null)
-            {
-                DevHelper.ResetDBData(); // fills the DB with default data if empty --> DEBUG ONLY
-                welcomeMessage = WelcomeMessageDAL.Load(DateTime.Now.DayOfWeek);
-            }
-
             return View(welcomeMessage);
         }
 
